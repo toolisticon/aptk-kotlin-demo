@@ -1,10 +1,10 @@
-package io.toolisticon.spiap.processor.tests;
+package io.toolisticon.aptkkotlindemo.processor.tests;
 
-import io.toolisticon.spiap.api.OutOfService;
-import io.toolisticon.spiap.api.Service;
-import io.toolisticon.spiap.api.Services;
-import io.toolisticon.spiap.processor.serviceprocessortest.AnotherTestSpi;
-import io.toolisticon.spiap.processor.serviceprocessortest.TestSpi;
+import io.toolisticon.aptkkotlindemo.api.OutOfService;
+import io.toolisticon.aptkkotlindemo.api.Service;
+import io.toolisticon.aptkkotlindemo.api.Services;
+import io.toolisticon.aptkkotlindemo.processor.serviceprocessortest.AnotherTestSpi;
+import io.toolisticon.aptkkotlindemo.processor.serviceprocessortest.TestSpi;
 
 @OutOfService
 @Services({

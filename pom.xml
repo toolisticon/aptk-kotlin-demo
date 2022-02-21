@@ -2,14 +2,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.toolisticon.spiap</groupId>
-    <artifactId>spiap-parent</artifactId>
+    <groupId>io.toolisticon.aptkkotlindemo</groupId>
+    <artifactId>aptk-kotlin-demo-parent</artifactId>
     <version>0.8.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>spiap-parent</name>
-    <description>Please refer to https://github.com/toolisticon/SPI-Annotation-Processor</description>
-    <url>https://github.com/holisticon/SPI-Annotation-Processor</url>
+    <name>aptk-kotlin-demo-parent</name>
+    <description>Please refer to https://github.com/toolisticon/kotlin-ap-demo</description>
+    <url>https://github.com/holisticon/kotlin-ap-demo</url>
 
     <modules>
 
@@ -52,7 +52,7 @@
         </license>
     </licenses>
 
-    <inceptionYear>2017</inceptionYear>
+    <inceptionYear>2022</inceptionYear>
 
     <prerequisites>
         <maven>3.0.4</maven>
@@ -60,14 +60,14 @@
 
 
     <issueManagement>
-        <url>https://github.com/toolisticon/SPI-Annotation-Processor/issues</url>
+        <url>https://github.com/toolisticon/aptk-kotlin-demo/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:toolisticon/SPI-Annotation-Processor.git</connection>
-        <developerConnection>scm:git:git@github.com:toolisticon/SPI-Annotation-Processor.git</developerConnection>
-        <url>git@github.com:toolisticon/SPI-Annotation-Processor.git</url>
+        <connection>scm:git:git@github.com:toolisticon/aptk-kotlin-demo.git</connection>
+        <developerConnection>scm:git:git@github.com:toolisticon/aptk-kotlin-demo.git</developerConnection>
+        <url>git@github.com:toolisticon/aptk-kotlin-demo.git</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -76,32 +76,45 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <encoding>UTF-8</encoding>
 
-        <java.version>1.7</java.version>
-
-        <java.compile.source.version>1.7</java.compile.source.version>
-        <java.compile.target.version>1.7</java.compile.target.version>
+        <kotlin.version>1.6.10</kotlin.version>
+        <java.version>1.8</java.version>
+        <java.compile.source.version>1.8</java.compile.source.version>
+        <java.compile.target.version>1.8</java.compile.target.version>
 
 
         <cute.version>0.9.0</cute.version>
-        <aptk.version>0.15.1</aptk.version>
+        <aptk.version>0.19.1</aptk.version>
 
         <!-- versions of test dependencies -->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
         <mockito.version>2.28.2</mockito.version>
-        <lombok.version>1.18.4</lombok.version>
 
 
         <!-- plugin versions -->
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <animal-sniffer-maven-plugin.version>1.17</animal-sniffer-maven-plugin.version>
         <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
-        <maven-bundle-plugin.version>4.2.1</maven-bundle-plugin.version>
+        <maven-build-helper-plugin.version>3.0.0</maven-build-helper-plugin.version>
+        <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.0.2</maven-dependency-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M1</maven-enforcer-plugin.version>
         <maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
-        <maven-jacoco-plugin.version>0.8.2</maven-jacoco-plugin.version>
+        <maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>    <!-- do not change to 1.6, it fails! -->
+        <maven-help-plugin.version>2.2</maven-help-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-jacoco-plugin.version>0.8.5</maven-jacoco-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
         <maven-processor-plugin.version>2.2.4</maven-processor-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <maven-shade-plugin.version>3.1.0</maven-shade-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-site-plugin.version>3.7</maven-site-plugin.version>
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-
-        <maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
+        <maven-versions-plugin.version>2.5</maven-versions-plugin.version>
 
 
     </properties>
@@ -150,8 +163,9 @@
                                         <exclude>*</exclude>
                                     </excludes>
                                     <includes>
-                                        <include>io.toolisticon.spiap:*</include>
+                                        <include>io.toolisticon.aptkkotlindemo:*</include>
                                         <include>io.toolisticon.aptk:*</include>
+                                        <include>org.jetbrains.kotlin:*</include>
                                         <include>*:*:*:*:test:*</include>
                                         <include>*:*:*:*:provided:*</include>
                                     </includes>
@@ -183,6 +197,7 @@
                 </executions>
             </plugin>
 
+
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -196,14 +211,93 @@
         <pluginManagement>
             <plugins>
 
+                <plugin>
+                    <!-- kotlin compiler -->
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <version>${kotlin.version}</version>
+                    <configuration>
+                        <jvmTarget>${java.version}</jvmTarget>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirs>
+                                    <source>target/generated-sources/annotations</source>
+                                    <source>src/main/kotlin</source>
+                                </sourceDirs>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>test-compile</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirs>
+                                    <source>src/test/kotlin</source>
+                                </sourceDirs>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.jetbrains.kotlin</groupId>
+                            <artifactId>kotlin-maven-allopen</artifactId>
+                            <version>${kotlin.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.jetbrains.kotlin</groupId>
+                            <artifactId>kotlin-maven-noarg</artifactId>
+                            <version>${kotlin.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
 
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
                         <source>${java.compile.source.version}</source>
                         <target>${java.compile.target.version}</target>
+                        <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                        <parameters>true</parameters>
                     </configuration>
-                    <version>${maven-compiler-plugin.version}</version>
+                    <executions>
+                        <!-- Replacing default-compile as it is treated specially by maven -->
+                        <execution>
+                            <id>default-compile</id>
+                            <phase>none</phase>
+                        </execution>
+                        <!-- Replacing default-testCompile as it is treated specially by maven -->
+                        <execution>
+                            <id>default-testCompile</id>
+                            <phase>none</phase>
+                        </execution>
+                        <execution>
+                            <id>java-compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>java-test-compile</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+
                 </plugin>
 
                 <plugin>
@@ -336,6 +430,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+        </dependency>
+
         <!-- Test dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -363,6 +462,12 @@
     <dependencyManagement>
         <dependencies>
 
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib-jdk8</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+
             <!-- internal -->
             <dependency>
                 <groupId>io.toolisticon.cute</groupId>
@@ -373,27 +478,27 @@
 
 
             <dependency>
-                <groupId>io.toolisticon.spiap</groupId>
-                <artifactId>spiap-api</artifactId>
+                <groupId>io.toolisticon.aptkkotlindemo</groupId>
+                <artifactId>aptk-kotlin-demo-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>io.toolisticon.spiap</groupId>
-                <artifactId>spiap-processor</artifactId>
+                <groupId>io.toolisticon.aptkkotlindemo</groupId>
+                <artifactId>aptk-kotlin-demo-processor</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>io.toolisticon.aptk</groupId>
-                <artifactId>tools</artifactId>
+                <artifactId>aptk-tools</artifactId>
                 <version>${aptk.version}</version>
             </dependency>
 
             <!-- processors apis -->
             <dependency>
                 <groupId>io.toolisticon.aptk</groupId>
-                <artifactId>annotationwrapper-api</artifactId>
+                <artifactId>aptk-annotationwrapper-api</artifactId>
                 <version>${aptk.version}</version>
                 <scope>provided</scope>
             </dependency>

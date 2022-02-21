@@ -2,33 +2,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spiap-processor</artifactId>
+    <artifactId>aptk-kotlin-demo-processor</artifactId>
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>io.toolisticon.spiap</groupId>
-        <artifactId>spiap-parent</artifactId>
+        <groupId>io.toolisticon.aptkkotlindemo</groupId>
+        <artifactId>aptk-kotlin-demo-parent</artifactId>
         <version>0.8.2-SNAPSHOT</version>
     </parent>
 
-    <name>spiap-processor</name>
+    <name>kotlin-ap-demo-processor</name>
 
     <dependencies>
 
 
         <dependency>
             <groupId>io.toolisticon.aptk</groupId>
-            <artifactId>tools</artifactId>
+            <artifactId>aptk-tools</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>io.toolisticon.spiap</groupId>
-            <artifactId>spiap-api</artifactId>
+            <groupId>io.toolisticon.aptkkotlindemo</groupId>
+            <artifactId>aptk-kotlin-demo-api</artifactId>
         </dependency>
 
         <dependency>
             <groupId>io.toolisticon.aptk</groupId>
-            <artifactId>annotationwrapper-api</artifactId>
+            <artifactId>aptk-annotationwrapper-api</artifactId>
         </dependency>
 
         <dependency>
@@ -47,7 +47,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.3</version>
+                <version>${maven-shade-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -64,7 +64,7 @@
                             <!-- exclude api -->
                             <artifactSet>
                                 <excludes>
-                                    <exclude>io.toolisticon.spiap:spiap-api</exclude>
+                                    <exclude>io.toolisticon.aptkkotlindemo:aptk-kotlin-demo-api</exclude>
                                 </excludes>
                             </artifactSet>
 
@@ -76,9 +76,9 @@
 
                             <relocations>
                                 <relocation>
-                                    <pattern>io.toolisticon.aptk</pattern>
+                                    <pattern>io.toolisticon.aptk.</pattern>
                                     <shadedPattern>
-                                        io.toolisticon.spiap.processor._3rdparty.io.toolisticon.aptk
+                                        io.toolisticon.aptkkotlindemo.processor._3rdparty.io.toolisticon.aptk
                                     </shadedPattern>
                                 </relocation>
 
@@ -105,17 +105,51 @@
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration combine.self="append">
-                    <verbose>true</verbose>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>io.toolisticon.aptk</groupId>
-                            <artifactId>annotationwrapper-processor</artifactId>
-                            <version>${aptk.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-proc:none</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+
+                <executions combine.self="append">
+                    <execution>
+                        <id>kapt</id>
+                        <goals>
+                            <goal>kapt</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>src/main/kotlin</sourceDir>
+                                <sourceDir>src/main/java</sourceDir>
+                            </sourceDirs>
+                            <annotationProcessorPaths>
+
+                                <annotationProcessorPath>
+
+                                    <groupId>io.toolisticon.aptk</groupId>
+                                    <artifactId>aptk-annotationwrapper-processor</artifactId>
+                                    <version>${aptk.version}</version>
+
+                                </annotationProcessorPath>
+                                <annotationProcessorPath>
+
+                                    <groupId>io.toolisticon.aptk</groupId>
+                                    <artifactId>aptk-annotationwrapper-api</artifactId>
+                                    <version>${aptk.version}</version>
+
+                                </annotationProcessorPath>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
 
         </plugins>
 

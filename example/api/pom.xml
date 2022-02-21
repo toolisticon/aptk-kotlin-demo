@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>io.toolisticon.spiap</groupId>
+        <groupId>io.toolisticon.aptkkotlindemo</groupId>
         <artifactId>example-parent</artifactId>
         <version>0.8.2-SNAPSHOT</version>
     </parent>
@@ -17,8 +17,8 @@
     <dependencies>
 
         <dependency>
-            <groupId>io.toolisticon.spiap</groupId>
-            <artifactId>spiap-api</artifactId>
+            <groupId>io.toolisticon.aptkkotlindemo</groupId>
+            <artifactId>aptk-kotlin-demo-api</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -34,8 +34,8 @@
                 <configuration combine.self="append">
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>io.toolisticon.spiap</groupId>
-                            <artifactId>spiap-processor</artifactId>
+                            <groupId>io.toolisticon.aptkkotlindemo</groupId>
+                            <artifactId>aptk-kotlin-demo-processor</artifactId>
                             <version>${project.version}</version>
                         </path>
                     </annotationProcessorPaths>

@@ -1,6 +1,6 @@
-package io.toolisticon.spiap.processor.tests;
+package io.toolisticon.aptkkotlindemo.processor.tests;
 
-import io.toolisticon.spiap.api.Spi;
+import io.toolisticon.aptkkotlindemo.api.Spi;
 
 @Spi
 public interface TestcaseValidUsage {

@@ -1,9 +1,9 @@
 package ${ package };
 
 import ${ canonicalName };
-import io.toolisticon.spiap.api.Service;
-import io.toolisticon.spiap.api.Services;
-import io.toolisticon.spiap.api.OutOfService;
+import io.toolisticon.aptkkotlindemo.api.Service;
+import io.toolisticon.aptkkotlindemo.api.Services;
+import io.toolisticon.aptkkotlindemo.api.OutOfService;
 
 import java.io.InputStream;
 import java.lang.ClassLoader;
